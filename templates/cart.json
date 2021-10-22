@@ -3,7 +3,10 @@
   "sections": {
     "main": {
       "type": "main-cart"
+    },
+    "example": {
+      "type": "example"
     }
   },
-  "order": ["main"]
+  "order": ["main", "example"]
 }

@@ -2,13 +2,6 @@
   {{ section.settings.title }}
 </h1>
 
-{% for block in section.blocks %}
-  {% case block.type %}
-    {% when '@app' %}
-      {% render block %}
-  {% endcase %}
-{% endfor %}
-
 {% schema %}
   {
     "name": "404",
@@ -17,16 +10,6 @@
         "type": "Text",
         "id": "title",
         "label": "Title"
-      }
-    ],
-    "default": {
-      "settings": {
-        "title": "404"
-      }
-    },
-    "blocks": [
-      {
-        "type": "@app"
       }
     ]
   }

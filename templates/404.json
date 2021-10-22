@@ -2,7 +2,10 @@
   "name": "404 Page",
   "sections": {
     "main": {
-      "type": "main-404"
+      "type": "main-404",
+      "settings": {
+        "title": "Uh-oh! You're lost"
+      }
     }
   },
   "order": ["main"]

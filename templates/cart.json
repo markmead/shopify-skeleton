@@ -5,7 +5,10 @@
       "type": "main-cart"
     },
     "example": {
-      "type": "example"
+      "type": "example",
+      "settings": {
+        "title": "Example Section!"
+      }
     }
   },
   "order": ["main", "example"]

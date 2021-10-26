@@ -1,0 +1,9 @@
+{
+  "name": "List Collections",
+  "sections": {
+    "main": {
+      "type": "main-list-collections"
+    }
+  },
+  "order": ["main"]
+}

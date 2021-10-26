@@ -2,7 +2,7 @@
   "name": "shopify-skeleton",
   "version": "1.0.0",
   "scripts": {
-    "dev": "NODE_ENV=development npx tailwindcss -i ./assets/tailwind.css -o ./assets/build.css --watch",
+    "dev": "NODE_ENV=development npx tailwindcss -i ./assets/tailwind.css -o ./assets/build.css --minify --watch",
     "prod": "NODE_ENV=production npx tailwindcss -i ./assets/tailwind.css -o ./assets/build.css --minify"
   },
   "devDependencies": {

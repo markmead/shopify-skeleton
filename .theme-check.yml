@@ -1,2 +1,4 @@
 MatchingTranslations:
   enabled: false
+ImgWidthAndHeight:
+  enabled: false

@@ -1,8 +1,8 @@
 {
-  "name": "Cart",
+  "name": "Search",
   "sections": {
     "main": {
-      "type": "main-cart"
+      "type": "main-search"
     }
   },
   "order": ["main"]

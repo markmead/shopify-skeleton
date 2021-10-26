@@ -1,5 +1,7 @@
 # WIP - Shopify Skeleton
 
+Minimal Shopify theme based on Theme Kit start theme but converted to Shopify 2.0 "Sections Everywhere" update
+
 ## Install
 
 ```
@@ -13,8 +15,3 @@ yarn
 yarn dev
 shopify theme serve
 ```
-
-## Todo
-
-- Chokidar to force CSS to recompile on `.liquid` file changes
-- Move templates to `.json`

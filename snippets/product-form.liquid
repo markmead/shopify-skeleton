@@ -17,3 +17,15 @@
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
   <button type="submit" name="add" id="AddToCart">Add to cart</button>
 </form>
+
+<script>
+  new Shopify.OptionSelectors('productSelect', {
+    product: {{ product | json }},
+    onVariantSelected: selectCallback,
+    enableHistoryState: true
+  })
+
+  function selectCallback(variant) {
+    console.log(variant)
+  }
+</script>

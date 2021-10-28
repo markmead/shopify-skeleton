@@ -5,7 +5,7 @@
       "type": "main-page"
     },
     "main": {
-      "type": "contact-page"
+      "type": "main-contact"
     }
   },
   "order": ["page", "main"]

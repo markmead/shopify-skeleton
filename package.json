@@ -6,6 +6,9 @@
     "prod": "NODE_ENV=production npx tailwindcss -i ./assets/theme.css -o ./assets/build.css --minify"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.7",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.17"

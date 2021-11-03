@@ -2,18 +2,28 @@
   "name": "shopify-skeleton",
   "version": "1.0.0",
   "scripts": {
-    "css": "NODE_ENV=production postcss ./assets/theme.css -o ./assets/build.css -w"
+    "css": "NODE_ENV=production postcss ./assets/theme.css -o ./assets/dist/theme.css -w",
+    "js": "NODE_ENV=production rollup -c -w"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.7",
+    "cssnano": "^5.0.8",
     "postcss": "^8.3.11",
     "postcss-cli": "^9.0.1",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
-    "cssnano": "^5.0.8",
-    "tailwindcss": "^2.2.17",
-    "@tailwindcss/aspect-ratio": "^0.3.0",
-    "@tailwindcss/forms": "^0.3.4",
-    "@tailwindcss/typography": "^0.4.1"
+    "rollup": "^2.59.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-uglify": "^6.0.4",
+    "tailwindcss": "^2.2.17"
   }
 }

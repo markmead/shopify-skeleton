@@ -2,15 +2,18 @@
   "name": "shopify-skeleton",
   "version": "1.0.0",
   "scripts": {
-    "dev": "NODE_ENV=development npx tailwindcss -i ./assets/theme.css -o ./assets/build.css --minify --watch",
-    "prod": "NODE_ENV=production npx tailwindcss -i ./assets/theme.css -o ./assets/build.css --minify"
+    "css": "NODE_ENV=production postcss ./assets/theme.css -o ./assets/build.css -w"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.3.0",
-    "@tailwindcss/forms": "^0.3.4",
-    "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.7",
     "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.17"
+    "postcss-cli": "^9.0.1",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.6",
+    "cssnano": "^5.0.8",
+    "tailwindcss": "^2.2.17",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/typography": "^0.4.1"
   }
 }

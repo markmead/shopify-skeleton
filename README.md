@@ -8,6 +8,12 @@ Minimal Shopify theme based on the Theme Kit starter theme but converted to the 
 shopify theme init [name] -u https://github.com/markmead/shopify-skeleton.git
 ```
 
+## Assets
+
+To make the build process of CSS and JavaScript clearer the develpoment files are located in the `src` folder at the root of the project.
+
+These files will be compiled into the `assets` folder which will contain minified versions.
+
 ### CSS
 
 This theme uses Tailwind CSS and therefore PostCSS to compile the main `theme.css` file.
@@ -42,7 +48,7 @@ It includes a `theme.js` file and a `product.js` file. If you wish to add more t
   {
     input: 'assets/[file].js',
     output: {
-      file: 'assets/dist/[file].js',
+      file: 'src/[file].js',
       format: 'cjs',
     },
     plugins,

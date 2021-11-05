@@ -2,7 +2,7 @@
   "name": "shopify-skeleton",
   "version": "1.0.0",
   "scripts": {
-    "css": "NODE_ENV=production postcss ./assets/theme.css -o ./assets/dist/theme.css -w",
+    "css": "NODE_ENV=production postcss ./src/theme.css -o ./assets/theme.min.css -w",
     "js": "NODE_ENV=production rollup -c -w"
   },
   "devDependencies": {

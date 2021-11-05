@@ -24,14 +24,14 @@
 
   {% render 'meta-tags' %}
 
-  <script src="{{ 'dev/theme.js' | asset_url }}" async></script>
+  <script src="{{ 'theme.min.js' | asset_url }}" async></script>
 
-  {{ 'dev/build.css' | asset_url | stylesheet_tag }}
+  {{ 'build.min.css' | asset_url | stylesheet_tag }}
 
   {% case template %}
     {% when 'product' %}
       <script src="{{ 'option_selection.js' | shopify_asset_url }}" async></script>
-      <script src="{{ 'dev/product.js' | asset_url }}" async></script>
+      <script src="{{ 'product.min.js' | asset_url }}" async></script>
   {% endcase %}
 
   {{ content_for_header }}

@@ -9,7 +9,7 @@
   },
   {
     "name": "Website",
-    "setings": [
+    "settings": [
       {
         "type": "image_picker",
         "id": "favicon",

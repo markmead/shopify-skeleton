@@ -16,17 +16,17 @@ const plugins = [
 
 export default [
   {
-    input: 'assets/theme.js',
+    input: 'src/theme.js',
     output: {
-      file: 'assets/dist/theme.js',
+      file: 'assets/theme.min.js',
       format: 'cjs',
     },
     plugins,
   },
   {
-    input: 'assets/templates/product.js',
+    input: 'src/templates/product.js',
     output: {
-      file: 'assets/dist/product.js',
+      file: 'assets/product.min.js',
       format: 'cjs',
     },
     plugins,

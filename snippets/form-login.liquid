@@ -1,0 +1,21 @@
+{% form 'customer_login' %}
+  <div class="space-y-6 account-form">
+    <div>
+      {{ form.errors | default_errors }}
+    </div>
+
+    <div>
+      <label for="email"> Email Address </label>
+      <input type="email" name="customer[email]" id="email" autocomplete="email" class="form-input"/>
+    </div>
+
+    <div>
+      <label for="password"> Password </label>
+      {% render 'form-password-input', autocomplete: 'current-password' %}
+    </div>
+
+    <button type="submit" class="w-full text-white bg-green-600 button">
+      Login
+    </button>
+  </div>
+{% endform %}

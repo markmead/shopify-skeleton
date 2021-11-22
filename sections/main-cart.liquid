@@ -1,7 +1,7 @@
-<section class="bg-white">
+<section>
   <div class="py-16 fluid-container">
     <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">
-      Shopping Cart
+      Shopping cart
     </h1>
 
     <form
@@ -10,14 +10,8 @@
       method="post"
       class="mt-12 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16"
     >
-      <section
-        aria-labelledby="cart-heading"
-        class="lg:col-span-7"
-      >
-        <h2
-          id="cart-heading"
-          class="sr-only"
-        >
+      <section aria-labelledby="cart-heading" class="lg:col-span-7">
+        <h2 id="cart-heading" class="sr-only">
           Items in your shopping cart
         </h2>
 
@@ -26,12 +20,12 @@
           class="border-t border-b border-gray-200 divide-y divide-gray-200"
         >
           {% for item in cart.items %}
-            {% render 'cart-line-item', item: item %}
+            {% render 'cart-line-item', item: item, index: forloop.index %}
           {% endfor %}
         </ul>
       </section>
 
-      {% render 'cart-order-summary' %}
+      {% render 'cart-summary' %}
     </form>
   </div>
 </section>

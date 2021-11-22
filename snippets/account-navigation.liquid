@@ -1,4 +1,4 @@
-{%- assign path_name = request.path | split: '/' | last -%}
+{%- assign template_name = template | split: '/' | last -%}
 
 <div class="flex flex-col flex-grow overflow-y-auto">
   <div class="flex items-center flex-shrink-0 px-4">
@@ -17,7 +17,7 @@
     >
       <a
         href="/account"
-        class="account-nav-link group {% if path_name == 'account' %}active{% endif %}"
+        class="account-nav-link group {% if template_name == 'account' %}active{% endif %}"
       >
         <span class="flex-shrink-0 mr-3 text-gray-400 group-hover:text-gray-500">
           {% render 'icon-cart' %}
@@ -30,7 +30,7 @@
 
       <a
         href="/account/addresses"
-        class="account-nav-link group {% if path_name == 'addresses' %}active{% endif %}"
+        class="account-nav-link group {% if template_name == 'addresses' %}active{% endif %}"
       >
         <span class="flex-shrink-0 mr-3 text-gray-400 group-hover:text-gray-500">
           {% render 'icon-home' %}

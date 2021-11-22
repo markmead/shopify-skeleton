@@ -1,0 +1,71 @@
+
+<aside
+  x-data
+  class="fixed inset-0 overflow-hidden"
+  aria-labelledby="slide-over-title"
+  role="dialog"
+  aria-modal="true"
+  :class="{ 'pointer-events-none': !$store.cart.drawer.open }"
+>
+  <div class="absolute inset-0 overflow-hidden">
+    <div
+      x-transition.opacity
+      x-show="$store.cart.drawer.open"
+      aria-hidden="true"
+      class="absolute inset-0 transition-opacity bg-gray-500/75"
+    ></div>
+
+    <div
+      x-show="$store.cart.drawer.open"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="translate-x-full"
+      x-transition:enter-end="translate-x-0"
+      x-transition:leave="transition ease-in duration-300"
+      x-transition:leave-start="translate-x-0"
+      x-transition:leave-end="translate-x-full"
+      @click.away="$store.cart.closeDrawer"
+      class="fixed inset-y-0 right-0 flex max-w-full pl-10"
+    >
+      <div class="w-screen max-w-md">
+        <div class="flex flex-col h-full overflow-y-scroll bg-white shadow-xl">
+          <div class="flex-1 px-4 py-6 overflow-y-auto sm:px-6">
+            <div class="flex items-start justify-between">
+              <h2
+                class="text-lg font-medium text-gray-900"
+                id="slide-over-title"
+              >
+                Shopping cart
+              </h2>
+
+              <div class="flex items-center ml-3 h-7">
+                <button
+                  type="button"
+                  class="p-2 -m-2 text-gray-400 hover:text-gray-500"
+                  @click="$store.cart.closeDrawer"
+                >
+                  <span class="sr-only">Close panel</span>
+
+                  <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <div class="flow-root">
+                <ul role="list" class="-my-6 divide-y divide-gray-200">
+                  {% for item in cart.items %}
+                    {% render 'cart-drawer-line-item', item: item, index: forloop.index %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {% render 'cart-drawer-summary' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

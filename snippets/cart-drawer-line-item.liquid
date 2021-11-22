@@ -1,0 +1,54 @@
+<li class="flex py-6">
+  <div class="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
+    <img
+      src="{{ item | img_url: 'medium' }}"
+      alt="{{ item.title | escape }}"
+      class="object-cover object-center w-full h-full"
+      loading="lazy"
+    >
+  </div>
+
+  <div class="flex flex-col flex-1 ml-4">
+    <div>
+      <div class="flex justify-between text-base font-medium text-gray-900">
+        <h3>
+          <a href="{{ item.url | within: collections.all }}">
+            {{ item.product.title }}
+          </a>
+        </h3>
+
+        <p class="ml-4">
+          {% if item.original_line_price != item.line_price %}
+            <span class="mr-1 line-through">
+              {{ item.price | money }}
+            </span>
+
+            {{ item.original_line_price | money }}
+          {% else %}
+            {{ item.price | money }}
+          {% endif %}
+        </p>
+      </div>
+
+      <p class="mt-1 text-sm text-gray-500">
+        {{ item.variant.title }}
+      </p>
+    </div>
+
+    <div class="flex items-end justify-between flex-1 text-sm">
+      <p class="text-gray-500">
+        Qty {{ item.quantity }}
+      </p>
+
+      <div class="flex">
+        <button
+          type="button"
+          class="font-medium text-indigo-600 hover:text-indigo-500"
+          @click="$store.cart.removeLineItem({{ index }})"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+</li>

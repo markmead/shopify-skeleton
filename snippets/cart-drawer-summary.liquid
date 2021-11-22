@@ -1,0 +1,44 @@
+<div class="px-4 py-6 border-t border-gray-200 sm:px-6">
+  <div class="flex justify-between text-base font-medium text-gray-900">
+    <p>
+      Total
+    </p>
+
+    <p>
+      {{ cart.total_price | money }}
+    </p>
+  </div>
+
+  <p class="mt-0.5 text-sm text-gray-500">
+    Shipping and taxes calculated at checkout.
+  </p>
+
+  <div class="mt-6 space-y-2">
+    <a
+      href="/cart"
+      class="w-full bg-gray-300 button"
+    >
+      View Cart
+    </a>
+
+    <a
+      href="/checkout"
+      class="w-full bg-green-500 button"
+    >
+      Checkout
+    </a>
+  </div>
+
+  <div class="flex justify-center mt-6 text-sm text-center text-gray-500">
+    <p>
+      or
+      <button
+        type="button"
+        class="font-medium text-indigo-600 hover:text-indigo-500"
+        @click="$store.cart.closeDrawer"
+      >
+        Continue Shopping <span aria-hidden="true"> &rarr;</span>
+      </button>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{
+  "name": "Account Page",
+  "sections": {
+    "orders": {
+      "type": "main-orders"
+    }
+  },
+  "order": ["orders"]
+}

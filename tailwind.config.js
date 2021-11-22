@@ -14,6 +14,9 @@ module.exports = {
         mono: [...defaultTheme.fontFamily.mono],
         serif: [...defaultTheme.fontFamily.serif],
       },
+      screens: {
+        print: { raw: 'print' },
+      },
     },
   },
   variants: {

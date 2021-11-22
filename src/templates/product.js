@@ -1,1 +1,1 @@
-// Hello 👋
+console.log('Hello 👋')

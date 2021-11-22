@@ -21,7 +21,7 @@ let jsPlugins = [
   uglify(),
   terser(),
 ]
-let jsFiles = ['theme', 'templates/product']
+let jsFiles = ['theme', 'templates/product', 'templates/addresses']
 
 jsFiles.forEach((file) => {
   let fileName = file.replace('templates/', '')

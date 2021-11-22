@@ -1,0 +1,42 @@
+<li class="flex py-10 space-x-6 border-b border-gray-200">
+  <img
+    src="{{ item | img_url: 'medium' }}"
+    alt="{{ item.title | escape }}"
+    class="flex-none object-cover object-center w-20 h-20 bg-gray-100 rounded-lg sm:w-40 sm:h-40"
+    loading="lazy"
+  >
+
+  <div class="flex flex-col flex-auto">
+    <div>
+      <h4 class="font-medium text-gray-900">
+        <a href="{{ item.url | within: collections.all }}">
+          {{ item.title }}
+        </a>
+      </h4>
+
+      {% if item.product.description != '' %}
+        <div class="mt-2 prose-sm prose">
+          {{ item.product.description }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="flex items-end flex-1 mt-6">
+      <dl class="flex space-x-4 text-sm divide-x divide-gray-200 sm:space-x-6">
+        <div class="flex">
+          <dt class="font-medium text-gray-900">Quantity</dt>
+          <dd class="ml-2 text-gray-700">
+            {{ item.quantity }}
+          </dd>
+        </div>
+
+        <div class="flex pl-4 sm:pl-6">
+          <dt class="font-medium text-gray-900">Price</dt>
+          <dd class="ml-2 text-gray-700">
+            {{ item.final_price | money }}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</li>

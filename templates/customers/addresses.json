@@ -1,0 +1,9 @@
+{
+  "name": "Addresses Page",
+  "sections": {
+    "main": {
+      "type": "main-addresses"
+    }
+  },
+  "order": ["main"]
+}

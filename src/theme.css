@@ -1,3 +1,6 @@
+@import './css/challenge';
+@import './css/forms';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

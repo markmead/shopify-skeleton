@@ -2,10 +2,13 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
 import json from '@rollup/plugin-json'
+import postcss from 'rollup-plugin-postcss'
 import { uglify } from 'rollup-plugin-uglify'
 import { terser } from 'rollup-plugin-terser'
 
-const plugins = [
+let config = []
+
+let jsPlugins = [
   babel({
     babelHelpers: 'bundled',
     exclude: 'node_modules/**',
@@ -18,12 +21,9 @@ const plugins = [
   uglify(),
   terser(),
 ]
+let jsFiles = ['theme', 'templates/product']
 
-let files = ['theme', 'templates/product']
-
-let config = []
-
-files.forEach((file) => {
+jsFiles.forEach((file) => {
   let fileName = file.replace('templates/', '')
 
   config.push({
@@ -31,8 +31,25 @@ files.forEach((file) => {
     output: {
       file: `assets/${fileName}.min.js`,
       format: 'cjs',
+      sourceMap: true,
     },
-    plugins,
+    plugins: jsPlugins,
+  })
+})
+
+let cssFiles = ['theme', 'css/forms', 'css/account']
+
+cssFiles.forEach((file) => {
+  let fileName = file.replace('css/', '')
+
+  config.push({
+    input: `src/${file}.css`,
+    output: { file: `assets/${fileName}.min.css` },
+    plugins: [postcss({ extract: true })],
+    onwarn: (warning, warn) => {
+      if (warning.code === 'FILE_NAME_CONFLICT') return
+      else warn(warning)
+    },
   })
 })
 

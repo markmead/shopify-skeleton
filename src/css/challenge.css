@@ -1,0 +1,14 @@
+.challenge {
+  .shopify-challenge__container {
+    @apply max-w-3xl px-4 py-16 mx-auto;
+    @apply lg:py-32;
+  }
+
+  .shopify-challenge__message {
+    @apply text-lg text-center;
+  }
+
+  .shopify-challenge__button {
+    @apply px-6 py-3 text-sm font-medium rounded-lg cursor-pointer;
+  }
+}

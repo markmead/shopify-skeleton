@@ -1,0 +1,230 @@
+<section>
+  <div class="py-16 fluid-container">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-end justify-between">
+        <div class="max-w-xl space-y-2">
+          <h2 class="text-sm font-semibold tracking-wide text-indigo-600 uppercase print:hidden">
+            Thank you!
+          </h2>
+
+          <h1 class="text-4xl font-bold sm:text-5xl">
+            Order summary
+
+            <span class="hidden print:inline">
+              - {{ order.order_number }}
+            </span>
+          </h1>
+
+          <p class="text-gray-500 print:hidden">
+            Here's a breakdown of your order #{{ order.order_number }}.
+          </p>
+        </div>
+
+        <div class="flex space-x-4">
+          <a
+            href="/account"
+            class="px-6 py-3 text-sm font-medium border border-gray-100 button print:hidden"
+          >
+            View orders
+          </a>
+
+          <button
+            x-data
+            @click="window.print()"
+            class="px-6 py-3 text-sm font-medium border border-gray-100 button print:hidden"
+          >
+            Print summary
+          </button>
+        </div>
+      </div>
+
+      <section aria-labelledby="order-heading" class="mt-10 border-t border-gray-200">
+        <h2 id="order-heading" class="sr-only">Your order</h2>
+
+        <h3 id="order-list-heading" class="sr-only">Items</h3>
+
+        <ul aria-labelledby="order-list-heading">
+          {% for item in order.line_items %}
+            {% render 'order-line-item', item: item %}
+          {% endfor %}
+        </ul>
+
+
+        <div class="sm:ml-40 sm:pl-6">
+          <h3 class="sr-only">Your information</h3>
+
+          <h4 class="sr-only">Addresses</h4>
+          <dl class="grid grid-cols-2 py-10 text-sm gap-x-6">
+            <div>
+              <dt class="font-medium text-gray-900">Shipping address</dt>
+              <dd class="mt-2 text-gray-700">
+                <address class="not-italic">
+                  <span class="block">
+                    {{ order.billing_address.name }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.billing_address.company }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.billing_address.street }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.billing_address.city }}, {{ order.billing_address.province }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.billing_address.country }} {{ order.billing_address.zip }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.billing_address.phone }}
+                  </span>
+                </address>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-medium text-gray-900">
+                Billing address
+              </dt>
+
+              <dd class="mt-2 text-gray-700">
+                <address class="not-italic">
+                  <span class="block">
+                    {{ order.shipping_address.name }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.shipping_address.company }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.shipping_address.street }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.shipping_address.city }}, {{ order.shipping_address.province }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.shipping_address.country }} {{ order.shipping_address.zip }}
+                  </span>
+
+                  <span class="block">
+                    {{ order.shipping_address.phone }}
+                  </span>
+                </address>
+              </dd>
+            </div>
+          </dl>
+
+          <dl class="grid grid-cols-2 py-10 text-sm border-t border-gray-200 gap-x-6">
+            <div>
+              <dt class="font-medium text-gray-900">Status</dt>
+              <dd class="mt-2 text-gray-700">
+                <span class="block">
+                  Financial: {{ order.financial_status_label | capitalize }}
+                </span>
+
+                <span class="block">
+                  Fulfillment: {{ order.fulfillment_status_label | capitalize }}
+                </span>
+
+                {% if order.cancelled %}
+                  <span class="block">
+                    Cancelled:
+                    {{ order.cancelled_at | date: format: 'abbreviated_date' }}
+                  </span>
+
+                  <span class="block">
+                    Cancel Reason: {{ order.cancel_reason_label }}
+                  </span>
+                {% endif %}
+              </dd>
+            </div>
+
+            <div>
+              <dt class="font-medium text-gray-900">
+                Shipping method
+              </dt>
+
+              {% for shipping_method in order.shipping_methods %}
+                <dd class="mt-2 text-gray-700">
+                  {{ shipping_method.title }} - {{ shipping_method.price | money }}
+                </dd>
+              {% endfor %}
+            </div>
+          </dl>
+
+          <h3 class="sr-only">Summary</h3>
+
+          <dl class="pt-10 space-y-6 text-sm border-t border-gray-200">
+            <div class="flex justify-between">
+              <dt class="font-medium text-gray-900">
+                Subtotal
+              </dt>
+
+              <dd class="text-gray-700">
+                {{ order.subtotal_price | money }}
+              </dd>
+            </div>
+
+            <div class="flex justify-between">
+              <dt class="flex font-medium text-gray-900">
+                Discounts
+
+                <ul class="block">
+                  {% for discount_application in order.cart_level_discount_applications %}
+                    <li class="rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2">
+                      {{ discount_application.title }}
+                    </li>
+                    Savings: -{{ discount_application.total_allocated_amount | money }}
+                  {% endfor %}
+                </ul>
+              </dt>
+
+              <dd class="text-gray-700">
+                {% if order.cart_level_discount_applications.size != 0 %}
+                  <ul class="block">
+                    {% for discount_application in order.cart_level_discount_applications %}
+                      <li>
+                        -{{ discount_application.total_allocated_amount | money }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  ---
+                {% endif %}
+              </dd>
+            </div>
+
+            <div class="flex justify-between">
+              <dt class="font-medium text-gray-900">Shipping</dt>
+              <dd class="text-gray-700">
+                {% capture shipping_price %}
+                  {% for shipping_method in order.shipping_methods %}
+                    {{ shipping_method.price | money }}
+                  {% endfor %}
+                {% endcapture %}
+
+                {{ shipping_price }}
+              </dd>
+            </div>
+
+            <div class="flex justify-between">
+              <dt class="font-medium text-gray-900">
+                Total
+              </dt>
+
+              <dd class="text-gray-900">
+                {{ order.total_price | money }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-{%- assign body_class = request.path | split: '/' | last -%}
+{%- assign path_name = request.path | split: '/' | last -%}
 
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
@@ -34,13 +34,15 @@
     {% when 'product' %}
       <script src="{{ 'option_selection.js' | shopify_asset_url }}" async></script>
       <script src="{{ 'product.min.js' | asset_url }}" async></script>
-    {% when 'customers/account' or 'customers/register' or 'customers/login' %}
+    {% when 'customers/account' or 'customers/register' or 'customers/login' or 'customers/addresses' %}
       {{ 'account.min.css' | asset_url | stylesheet_tag }}
+    {% when 'customers/addresses' %}
+      <script src="{{ 'addresses.min.js' | asset_url }}" async></script>
   {% endcase %}
 
   {{ content_for_header }}
 </head>
-<body class="{{ body_class }}">
+<body class="{{ path_name }}">
   {% section 'header' %}
 
   <main id="MainContent" role="main" tabindex="-1">

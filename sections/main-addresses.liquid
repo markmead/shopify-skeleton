@@ -1,0 +1,66 @@
+<section>
+  <div class="px-4 py-16">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
+      {% render 'account-navigation' %}
+
+      <div class="lg:col-span-3">
+        <div class="max-w-xl">
+          <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            Addresses
+          </h1>
+
+          <p class="mt-2 text-sm text-gray-500">
+            View and manage your addresses associated with your account.
+          </p>
+        </div>
+
+        <div class="mt-8" x-data="{ show: false }">
+          <h2 class="sr-only">
+            Addresses
+          </h2>
+
+          <ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {% for address in customer.addresses %}
+              {% render 'account-address', address: address, index: forloop.index %}
+            {% endfor %}
+
+            <li x-data class="relative p-6 overflow-hidden border-2 border-gray-100 border-dashed rounded-lg">
+              <button
+                type="button"
+                @click="show = true"
+                class="absolute inset-0 flex items-center justify-center w-full text-gray-700 hover:text-gray-500"
+              >
+                <span class="mr-3 font-medium">
+                  Add new address
+                </span>
+
+                {% render 'icon-plus' %}
+              </button>
+            </li>
+          </ul>
+
+          <div
+            x-transition
+            x-show="show"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black/25"
+          >
+            <div
+              @click.away="show = false"
+              class="w-screen max-w-3xl mx-auto"
+            >
+              <div class="p-6 bg-white rounded-lg max-h-[75vh] overflow-y-auto">
+                {% form 'customer_address', customer.new_address,
+                  data-address: "root",
+                  class: "flex flex-col space-y-6 account-form"
+                %}
+                  {% render 'form-address-fields' %}
+                {% endform %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,70 @@
+<li>
+  <h3 class="sr-only">
+    Order placed on
+
+    <time datetime="{{ order.created_at }}">
+      {{ order.created_at | date: format: 'abbreviated_date' }}
+    </time>
+  </h3>
+
+  <div
+    class="px-4 py-6 bg-gray-50 sm:rounded-lg sm:p-6 md:flex md:items-center md:justify-between"
+  >
+    <dl class="space-y-4 text-sm text-gray-600 divide-y divide-gray-200 md:divide-y-0 md:space-y-0 md:grid md:grid-cols-4 md:gap-x-6 lg:gap-x-8 lg:flex-none">
+      <div class="flex justify-between md:block">
+        <dt class="font-medium text-gray-900">
+          Order number
+        </dt>
+
+        <dd class="md:mt-1">
+          {{ order.order_number }}
+        </dd>
+      </div>
+
+      <div class="flex justify-between pt-4 md:block md:pt-0">
+        <dt class="font-medium text-gray-900">
+          Item count
+        </dt>
+
+        <dd class="md:mt-1">
+          {{ order.item_count }}
+        </dd>
+      </div>
+
+      <div class="flex justify-between pt-4 md:block md:pt-0">
+        <dt class="font-medium text-gray-900">
+          Date placed
+        </dt>
+
+        <dd class="md:mt-1">
+          <time datetime="{{ order.created_at }}">
+            {{ order.created_at | date: format: 'abbreviated_date' }}
+          </time>
+        </dd>
+      </div>
+
+      <div class="flex justify-between pt-4 font-medium text-gray-900 md:block md:pt-0">
+        <dt>
+          Total amount
+        </dt>
+
+        <dd class="md:mt-1">
+          {{ order.total_price | money }}
+        </dd>
+      </div>
+    </dl>
+
+    <div class="mt-6 md:mt-0 md:ml-6">
+      <a
+        href="{{ order.customer_url }}"
+        class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 md:w-auto"
+      >
+        View Order
+
+        <span class="sr-only">
+          {{ order.order_number }}
+        </span>
+      </a>
+    </div>
+  </div>
+</li>

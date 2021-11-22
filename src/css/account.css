@@ -15,7 +15,21 @@ main > div {
     @apply block text-sm font-medium text-gray-700;
   }
 
-  input {
+  input,
+  select {
     @apply block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm;
   }
+}
+
+.account-nav-link {
+  @apply flex items-center p-2 text-gray-600 rounded-md;
+  @apply hover:bg-gray-50;
+
+  &.active {
+    @apply text-gray-900 bg-gray-100;
+  }
+}
+
+[data-address='root'] [data-aria-hidden='true'] {
+  @apply hidden;
 }

@@ -2,7 +2,7 @@
   "name": "shopify-skeleton",
   "version": "1.0.0",
   "scripts": {
-    "assets": "NODE_ENV=production rollup -c -w.buildDelay 5000"
+    "assets": "NODE_ENV=production rollup -c -w.buildDelay 1000"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -28,5 +28,8 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-uglify": "^6.0.4",
     "tailwindcss": "^2.2.17"
+  },
+  "dependencies": {
+    "@shopify/theme-addresses": "^4.1.1"
   }
 }
